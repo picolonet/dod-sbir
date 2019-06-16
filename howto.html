@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<!-- saved from url=(0014)about:internet -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>How to Prepare an NSF Proposal Using LaTeX</title>
+
+   
+   <meta name="GENERATOR" content="Mozilla/4.77 [en] (X11; U; Linux 2.4.2-2 i686) [Netscape]">
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EF" vlink="#51188E" alink="#FF0000">
+
+<h1>
+Proposal Preparation in LaTeX</h1>
+&nbsp;
+<h2>
+Write the proposal</h2>
+<p>Use the latex template 
+<a href="http://pordlabs.ucsd.edu/sgille/how_to/proposal/proposal_template.tex">proposal_template.tex</a> 
+as a starting point.  Write text to fill the sections.  
+Note that this template uses the Times font, which converts nicely to pdf,
+but NSF guidelines now specify fonts, and this format will need to be 
+updated.
+<br>
+<br>Complete bibliography information in
+the <a href="http://pordlabs.ucsd.edu/sgille/how_to/proposal/draft.bib">draft.bib</a> file.  (Emacs has a macro that will
+help you fill in bibliography information.  Make sure the file that you are 
+editing
+ends .bib, and emacs will set up the templates, specified in drop down
+menus. The emacs command sequence ^C^C will clean up an entry once it has been
+filled in, ^X^S will save, and ^X^C will quit.  Web of Science now allows
+you to save bibliographic information in bibtex format, and only minimal
+typing/editing should be required.)
+<br>
+<br>You'll need two special style files:  <a href="http://pordlabs.ucsd.edu/sgille/how_to/proposal/proposalnsf.cls">proposalnsf.cls</a> is a proposal class file for latex originally developed by Stefan Llewellyn
+Smith (updated 1 June 2008.  An older version is also still available:  
+<a href="http://pordlabs.ucsd.edu/sgille/how_to/proposal/proposal.cls">proposal.cls</a>).  <a href="http://pordlabs.ucsd.edu/sgille/how_to/proposal/jponew.bst">jponew.bst</a> is a bibliography style 
+file based on AMS bibliography style.  It was hacked from the AGU bibliography
+style file.  Download them and insert them in your working directory.
+<br>
+<br>Figures can be included using epsfig or psfig.  Alternatively, they can be
+inserted as pdf, png, or jpg, and the proposal can be processed using pdflatex
+(rather than latex).
+<br>
+<br>Here's a pdf version of the template file: <a href="http://pordlabs.ucsd.edu/sgille/how_to/proposal/proposal_template.pdf">proposal_template.pdf</a>.
+
+
+<br>&nbsp;
+</p><h2>
+LaTeX the proposal and generate pdf</h2>
+<tt>latex <i>filename</i></tt>
+<br><tt>bibtex <i>filename</i></tt>
+<br><tt>latex <i>filename</i></tt>
+<br><tt>latex <i>filename</i></tt><tt></tt>
+<p><tt>dvips -f -tletter -Ppdf -G0 <i>filename</i> &gt;! <i>filename</i>.ps</tt>
+<br><tt>ps2pdf <i>filename</i>.ps <i>filename</i>.pdf</tt>
+
+<br>
+<br>
+Alternatively, the pdflatex command can be used in place of latex, in which case
+dvips and ps2pdf are not needed.
+<br>
+<br>
+Note that <tt>ps2pdf</tt> uses ghostscript, and in the past NSF would reject the results if 
+you did not use a sufficiently current version of ghostscript. (Version
+7.03-1 works.) In <tt>dvips</tt>, you should use "-Ppdf" in order to fix the fonts; NSF is now fairly adaptable in what they can accept, but originally,
+they had a pdf checker that complained if you missed this flag.
+<br>
+<br>NSF requests that each segment of the proposal be submitted as a separate
+document.  To subdivide the latex file use the <tt>dvips</tt> flags <tt>-n<i>number_of_pages</i> -p=<i>starting_page_counting_from_beginning_of_document</i></tt>. 
+
+<br>
+<br>
+<a href="http://www-pord.ucsd.edu/~sgille/">Sarah Gille</a>, 2002-2013
+
+
+</p></body></html>
