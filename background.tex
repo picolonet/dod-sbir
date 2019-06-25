@@ -50,3 +50,70 @@ nodes of a blockchain network to make it more resilient to attacks by bad actors
 increasing the number of nodes, the ability for a bad actor to impact the consensus
 protocol used by the blockchain is reduced.
 \end{itemize}
+
+While blockchain networks can be categorized aBlockchain networks can be categorized based on their permission model, which determines who
+can maintain them (e.g., publish blocks). If anyone can publish a new block, it is permissionless.
+If only particular users can publish blocks, it is permissioned. For our use case, we envision this to be a permissioned or a
+"consortium" design that explicity allows specific installations, such as government, defense or military entities to be part of the network.
+The network membership would be based off public key crytography based access control mechanisms that have been successfully used in the 
+Internet today.
+
+The focus of our design is to build a blockchain-based framework to store mission critical data.
+
+\subsection{How Blockchains can utilize Quantum Computing:}
+
+
+Refer section 3.1 on the strength of cryptographic hash functions.
+
+
+\subsection{Distributed Ledgers}
+
+A ledger is a collection of transactions.  How would a ledger look ?
+Talk about Merkle trees and other data structures ?
+
+Centrally owned ledgers suffer from the problem of a single point of attack or failure.
+
+\subsection{Blocks}
+
+Blockchain network users submit candidate transactions to the blockchain network via software
+(desktop applications, smartphone applications, digital wallets, web services, etc.). The software
+sends these transactions to a node or nodes within the blockchain network. The chosen nodes
+may be non-publishing full nodes as well as publishing nodes. The submitted transactions are
+then propagated to the other nodes in the network, but this by itself does not place the transaction
+in the blockchain. For many blockchain implementations, once a pending transaction has been
+distributed to nodes, it must then wait in a queue until it is added to the blockchain by a
+publishing node.
+Transactions are added to the blockchain when a publishing node publishes a block. A block
+contains a block header and block data. The block header contains metadata for this block. The
+block data contains a list of validated and authentic transactions which have been submitted to
+the blockchain network. Validity and authenticity is ensured by checking that the transaction is
+correctly formatted and that the providers of digital assets in each transaction (listed in the
+transaction’s ‘input’ values) have each cryptographically signed the transaction. This verifies that
+the providers of digital assets for a transaction had access to the private key which could sign
+over the available digital assets. The other full nodes will check the validity and authenticity of
+all transactions in a published block and will not accept a block if it contains invalid transactions.
+It should be noted that every blockchain implementation can define its own data fields; however,
+many blockchain implementations utilize data fields like the following:
+• Block Header
+o The block number, also known as block height in some blockchain networks.
+o The previous block header’s hash value.
+o A hash representation of the block data (different methods can be used to
+accomplish this, such as a generating a Merkle tree (defined in Appendix B), and
+storing the root hash, or by utilizing a hash of all the combined block data).
+o A timestamp.
+
+The size of the block.
+o The nonce value. For blockchain networks which utilize mining, this is a number
+which is manipulated by the publishing node to solve the hash puzzle (see Section
+4.1 for details). Other blockchain networks may or may not include it or use it for
+another purpose other than solving a hash puzzle.
+• Block Data
+o A list of transactions and ledger events included within the block.
+o Other data may be present.
+
+\noindent \bf{Chaining of Blocks:} Blocks are chained together through each block containing the hash digest of the previous block’s header, thus forming the
+blockchain. If a previously published block were changed, it would have a different hash. This in turn would cause all subsequent
+blocks to also have different hashes since they include the hash of the previous block. This makes it possible to easily detect and reject
+altered blocks. Figure 3 shows a generic chain of blocks.
+
+\subsection{Consensus Models}

@@ -7,6 +7,7 @@ https://sbir.defensebusiness.org/topics?topicId=30539
 
 2. Find 3-5 articles or papers talking about blockchain for
 reliability, copy paragraphs of text into intro/background section.
+  2.1 Talk about Merkle trees and other data structures.
 
 3. Disaster scenarios and continuity of operation overview.
 
