@@ -1,2 +1,23 @@
 In this section, we present a brief summary of related work and how they contribute towards
 our design and implementation.
+
+
+\subsection{Existing work on distributed systems}
+
+The ability (and often requirement) to communicate over a shared channel is a defining characteristic of distributed
+programs, and many of the key results in the field pertain to the possibility and impossibility of performing
+distributed computations under particular sets of network conditions.
+
+For example, the celebrated FLP impossibility result9 demonstrates the inability to guarantee consensus in an
+asynchronous network (i.e., one facing indefinite communication partitions between processes) with one faulty process.
+This means that, in the presence of unreliable (untimely) message delivery, basic operations such as modifying the set
+of machines in a cluster (i.e., maintaining group membership, as systems such as Zookeeper are tasked with today) are
+not guaranteed to complete in the event of both network asynchrony and individual server failures. Related results
+describe the inability to guarantee the progress of serializable transactions,7 linearizable reads/writes,11 and a
+variety of useful, programmer-friendly guarantees under adverse conditions.3 The implications of these results are not
+simply academic: these impossibility results have motivated a proliferation of systems and designs offering a range of
+alternative guarantees in the event of network failures.5 Under a friendlier, more reliable network that guarantees
+timely message delivery, however, FLP and many of these related results no longer hold:8 by making stronger guarantees
+about network behavior, we can circumvent the programmability implications of these impossibility proofs.
+
+Follow up with references from here: https://queue.acm.org/detail.cfm?id=2655736
