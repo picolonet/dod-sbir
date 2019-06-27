@@ -5,19 +5,19 @@ https://sbir.defensebusiness.org/topics?topicId=30539
 
 1. Convert all documents from above to bibtex entries.
 
-2. Find 3-5 articles or papers talking about blockchain for
-reliability, copy paragraphs of text into intro/background section.
+2. Related work references:
+  2.0 Existing work on IT system reliability, copy paragraphs of text into intro/background section.
   2.1 Talk about Merkle trees and other data structures.
+  2.2 Add Trillian project.
 
-3. Disaster scenarios and continuity of operation overview.
-
-   Write a short para introducing the problem
-
-4. Survey of any existing IT systems designed for disaster and COOP. 
+  2.3 Survey of any existing IT systems designed for disaster and COOP. 
    Any network, db and other system architectures.
    Collect references and summarize in related work. Any work
   on failure and resilience models  or theoretical frameworks. 
 
+3. Disaster scenarios and continuity of operation overview.
+
+   Write a short para introducing the problem
 
 5. Expand section on phase 1 technical objectives. Copy from
   the req and expand with details.

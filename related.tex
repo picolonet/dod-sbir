@@ -13,11 +13,19 @@ asynchronous network (i.e., one facing indefinite communication partitions betwe
 This means that, in the presence of unreliable (untimely) message delivery, basic operations such as modifying the set
 of machines in a cluster (i.e., maintaining group membership, as systems such as Zookeeper are tasked with today) are
 not guaranteed to complete in the event of both network asynchrony and individual server failures. Related results
-describe the inability to guarantee the progress of serializable transactions,7 linearizable reads/writes,11 and a
-variety of useful, programmer-friendly guarantees under adverse conditions.3 The implications of these results are not
-simply academic: these impossibility results have motivated a proliferation of systems and designs offering a range of
-alternative guarantees in the event of network failures.5 Under a friendlier, more reliable network that guarantees
-timely message delivery, however, FLP and many of these related results no longer hold:8 by making stronger guarantees
-about network behavior, we can circumvent the programmability implications of these impossibility proofs.
+describe the inability to guarantee the progress of serializable transactions\cite{Davidson1985}, linearizable
+reads/writes \cite{Gilbert2002}, and a variety of useful, programmer-friendly guarantees under adverse conditions
+\cite{Bailis2013}. The implications of these results are not simply academic: these impossibility results have motivated
+a proliferation of systems and designs offering a range of alternative guarantees in the event of network failures.5
+Under a friendlier, more reliable network that guarantees timely message delivery, however, FLP and many of these
+related results no longer hold:8 by making stronger guarantees about network behavior, we can circumvent the
+programmability implications of these impossibility proofs.
 
 Follow up with references from here: https://queue.acm.org/detail.cfm?id=2655736
+
+The Ubiq \cite{ubiq}framework fully tolerates infrastructure degradation and datacenter-level outages without any manual
+intervention. It also guarantees exactly-once semantics for application pipelines to process logs in the form of event
+bundles. Ubiq has been in production for Google’s advertising system for many years and has served as a critical log
+processing framework for hundreds of pipelines. Our production deployment demonstrates linear scalability with machine
+resources, extremely high availability even with underlying infrastructure failures, and an end-to-end latency of under
+a minute.

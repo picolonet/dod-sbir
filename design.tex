@@ -68,7 +68,13 @@ potentially malicious nodes or provisionin additinal capacity into the system.
 \subsubsection{Distributed Ledger}
 
 How will we use Trillian or Merkle trees.
- 
+
+The blockchain data store is built upon the Verifiable Data structures concept \cite{verfiable2015}. The idea is that each
+system in the chain of mission criticial IT systems, would be able to submit transactions which get recorded on the
+blockchain as append-only logs. Since any of these systems could be compromised or attacked, we assume a "trust but
+verify" philosophy that also underlies such data structures. The full design of how the blockchain uses this data
+structures shall be completed during Phase II of the project.
+
 \subsubsection{Proof of storage}
 
 While not explicitly a part of Phase I, the system incorporates succint and zero knowledge proofs of storage. Add
