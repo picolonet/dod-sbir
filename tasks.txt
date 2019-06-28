@@ -3,6 +3,8 @@ Original solicitation:
 
 https://sbir.defensebusiness.org/topics?topicId=30539
 
+NIST REPORT: https://nvlpubs.nist.gov/nistpubs/ir/2018/NIST.IR.8202.pdf
+
 1. Convert all documents from above to bibtex entries.
 
 2. Related work references:
