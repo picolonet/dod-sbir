@@ -1,37 +1,10 @@
-This section describes the technical objectives and a design for achieving them in Phase I of the SBIR project. The
-technical goals for Phase I are the following:
+This section describes the technical design for achieving our Phase I/II objectives. :vs
 
-\begin{enumerate}
-
-\item {\bf Design:} Complete a design of a blockchain-based quantum resistant system for mission critical operation and
-COOP goals. The milestone consists of a design document with high-level specification of each component of the
-blockchain system, including design of the ledger, the consensus mechanism, database replication, data query and other
-supported operations.
-
-\item {\bf Internal Testbed :} Build a testbed using hosted containers and simulated networks for iterated model of code development and testing
-before moving to the real test. This capability will be important for rapid prototyping, testing and development in-house.
-
-\item {\bf Simulation readiness :} The prototype blockchain would have undergone enough internal testing to be ready for
-the simulation run. This milestone also includes implemenation of the simulation environment, including creation of
-synthetic users, test cases, instrumentation logic measuring real-time and statistical performance properties and
-related software components. As given in the topic announcement, the simulation consists of conducting a set of
-experiments to measure variuos aspects of the blockchain system. 
- 
-\item {\bf Simulation execution :} The simulation includes experiments that mimic different kinds of disruptions, such as
-testing for network partitions, coordinated failures of network and nodes (including denial of service attack patterns)
-and measurement of performance under high latency and packet losses. Some of the characteristics that we shall measure
-include but not limited to:
-
-\begin{enumerate}
-
-put some metrics here.
-
-\end{enumerate}
-
-\item {Readiness for Phase II:} The system should be implemented and designed at a level that makes it ready for Phase
-II development and progress.
-\end{enumerate}
-
+The principal components of a secure and performant Blockchain system include a decentralized and distributed legder, a
+network stack, a consensus mechanism and possibly a smart contract system in a turing complete language. The reader is
+referred to some prior research that capture contemporary design concepts in this space, namely \cite{micali16,
+garay2015, ava2018}. Also we refer the reader to Picolo Labs whitepaper for a planet-level robut decentralized database
+design \cite{picolo}.
 
 ORIG:
 PHASE I: An engineering prototype will be constructed using a quantum-resistant blockchain framework designed to support
@@ -51,19 +24,33 @@ performer will verify and validate that data block generation is secure and that
 and auditable. The phase I deliverable is a report, delivery of collected data, and a demonstration of the engineering
 prototype system.
 
-\subsection{System Design}
-
 \subsubsection{Network stack}
 
-erasure codes, fountain codes (ref Harmony).
+We shall use a p2p network stack designed for redudancy and resiliency to failures. There is wide range of research
+literature to draw a design from.  The Freenet \cite{freenet_thesis, Clarke_2001} and the Gnutella \cite{Gnutella} p2p
+systems were popular in the previous decade for file sharing. Both systems were designed for sharing of large files over
+a longer duration of time. Content reliabilty including lookup reliability and network latency goals were necessary in
+this enviroment. The second generation of p2p systems include research driven projects such as Chord \cite{Stoica_2001},
+Content Addressable Network (CAN) \cite{Ratnasamy_2001}, Pastry \cite{Rowstron_2001}, Tapestry \cite{tapestry2004} and
+Kademlia. Chord along with CAN, Tapestry and Pastry developed the concept of distributed hash tables (DHTs) as a
+fundamental mechanism for content-based addressing.
 
-\subsubsection{Node discovery and aliveness}
+Our design builds upon this prior work by using a quantum-resistant distributed hash table for
+publish/subscribe of services will allow for database services to move from one compute node to another in the face of
+failures. A heatbeat based model for node aliveness and discovery could accomplish the goals of resilience to diverse
+network conditions and coordinated failures. Our design space includes the possibility of utilizing error-correcting or
+detecting codes such as erasure codes / fountain codes (\cite{byers1998}, \cite{hu2013}) or other ways of adding
+redudancy into the application layer protocols.
 
 \subsubsection{Authenticaiton and access control}
 
 Since this is a permissioned blockchain network, each node shall be instantiated with a agency certificate and a node
 certificate. The agency or office certificate gives the local administrator certain privileges in terms of deactiviating
-potentially malicious nodes or provisionin additinal capacity into the system.
+potentially malicious nodes or provisionin additional capacity into the system. Each transaction into the blockchain
+ledger shall be authenticated by the proposer and validated using a consensus mechanism. The blockchain acts as a
+distriubted computer with its own consensus mechanism that is able to function in various modes: a normal mode where
+operations are allowed as per regular consensus mechanisms and a safe mode when the system is under attack. Using a
+system of smart contracts (Phase II work) the system is collectively able to transition between such modes intelligently.
 
 \subsubsection{Distributed Ledger}
 
