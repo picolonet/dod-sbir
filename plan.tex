@@ -1,0 +1,54 @@
+This section presents a breakdown of the work planned for Phase I of this SBIR proposal. The work plan expands upon the
+goals given in the original proposal with details on execution. 
+
+\subsection{Simulation environment:}
+
+As given in the call for proposals, we shall use two different environments for our simulations:
+
+\noindent{\bf 1. Medium latency Wide-area networks :} We shall utilize existing research \cite{gustaf2013, haq2017}
+to emulate networks with medium-latency and medium-bandwidth. Our testbed shall consist of 
+containers that use virtualized network stacks on the Linux platform. We shall programmatically
+emulate different network conditions to study the resilience of the blockchain system.
+
+\noindent{\bf 2. High latency WANs:}  We shall programmatically emulate networks with high-latency and low-bandwidth
+exemplified by WANs that include satellite links. Our emulation testbed gives us the ability to also test for
+coordinated link and node failures attacks such as that can happen in a disaster scenario as discussed next.
+ 
+\noindent{\bf3. Other failure modes:} Apart from network failures, we shall also study the performance of the blockchain
+system under coordinated models of attack by building upon the past research in this area \cite{xiao, niu2017,
+kurar2014, zhou2010}. The specific failure/attack models include sudden coodinated failures of network links and nodes,
+compromise of systems including security credentials and denial-of-service.
+
+Next we discuss the specific milestones for Phase I for our work. 
+
+\begin{enumerate}
+\item {\bf Prototype Design:} Complete a design of a blockchain-based quantum resistant system for
+mission critical operation and COOP goals. The milestone consists of a design document with high-level specification of
+each component of the blockchain system, including design of the ledger, the consensus mechanism, database replication,
+data query and other supported operations.
+
+
+\item {\bf Internal Testbed:} Build a testbed using hosted containers and simulated networks for iterated model of code
+development and testing before moving to the real test. This capability will be important for rapid prototyping, testing
+and development in-house. This will also allow the team to test the blockchain with various synthetic failure models
+before proceeding forward with the Phase I simulations.
+
+\item {\bf Engineering prototype:} The prototype blockchain would have undergone enough internal testing to be ready for
+the simulation run. This milestone also includes implemenation of the simulation environment, including creation of
+synthetic users, test cases, instrumentation logic measuring real-time and statistical performance properties and
+related software components. As given in the topic announcement, the simulation consists of conducting a set of
+experiments to measure variuos aspects of the blockchain system. 
+
+The engineering prototype will be constructed using a quantum-resistant blockchain framework designed to
+support COOP. The engineering prototype will be comprised from a set of twenty independent systems connected logically
+through the blockchain framework. 
+
+\item {\bf Phase I Simulation:}  Our simulation will generate a stochastically significant number of documents mapped to
+a statistical distribution of users. We shall draw from user distribution studies in distributed file systems research
+to program specific access patterns. During the simulation, we shall induce failures as discussed above. The metrics
+collected will include data on distribution of the file requests, details on failures and their impact on the system. We
+shall study the effect on the blockchain system to ensure performance degrades gracefully with increased failure.
+
+\end{enumerate}
+
+All of the above work shall be documented in a report which will be made available upon completion of Phase I.
