@@ -40,7 +40,7 @@ publish/subscribe of services will allow for database services to move from one 
 failures. A heatbeat based model for node aliveness and discovery could accomplish the goals of resilience to diverse
 network conditions and coordinated failures. Our design space includes the possibility of utilizing error-correcting or
 detecting codes such as erasure codes / fountain codes (\cite{byers1998}, \cite{hu2013}) or other ways of adding
-redudancy into the application layer protocols.
+redudancy into the application layer protocols \cite{bloxroute}.
 
 \subsubsection{Authenticaiton and access control}
 
@@ -54,7 +54,9 @@ system of smart contracts (Phase II work) the system is collectively able to tra
 
 \subsubsection{Distributed Ledger}
 
-How will we use Trillian or Merkle trees.
+Our design of the distributed ledger will make use of concepts from the Trillian project which builds upon Merkle trees
+and Verifiable Data structures \cite{verifiable2015}. This allows the system to scale to potentially billions of
+indexable records should the need arise.
 
 The blockchain data store is built upon the Verifiable Data structures concept \cite{verfiable2015}. The idea is that each
 system in the chain of mission criticial IT systems, would be able to submit transactions which get recorded on the
@@ -64,12 +66,15 @@ structures shall be completed during Phase II of the project.
 
 \subsubsection{Proof of storage}
 
-While not explicitly a part of Phase I, the system incorporates succint and zero knowledge proofs of storage. Add
-references.
+While not explicitly a part of Phase I, the system incorporates succint and zero knowledge proofs of storage. Proofs
+of data and storage are cryptographic proofs constructed by participant nodes. These are quantum resistant and can be
+used to prove the existing (or not) of data and node availability. While not an explicit goal in Phase I or II, our
+design allows us to use such strong cryptographic constructs to make the system highly resilient to any coordinated
+attacker \cite{ben2019}.
 
+\subsubsection{Design of a Recovery mode}
 
-\subsubsection{Design of a Recovery mode:}
-
-A protocol that will get activiated based on a smart contract and consensus system which puts the blockchain into a
-disaster recovery mode.
-What happens in the recovery mode of operation vs normal mode ?
+Our blockchain framework allows us to design a recovery mode which is a protocol that will get activiated based on a 
+smart contract and consensus system which puts the blockchain into a disaster recovery mode. This mode can put in 
+stricter controls and automatic locking of certain types of data silos, for example. Over time, this could be programmed
+for other mission specific recovery mode behaviors.
