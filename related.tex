@@ -21,7 +21,6 @@ Under a friendlier, more reliable network that guarantees timely message deliver
 related results no longer hold:8 by making stronger guarantees about network behavior, we can circumvent the
 programmability implications of these impossibility proofs.
 
-Follow up with references from here: https://queue.acm.org/detail.cfm?id=2655736
 
 The Ubiq \cite{ubiq}framework fully tolerates infrastructure degradation and datacenter-level outages without any manual
 intervention. It also guarantees exactly-once semantics for application pipelines to process logs in the form of event
@@ -29,3 +28,37 @@ bundles. Ubiq has been in production for Google’s advertising system for many 
 processing framework for hundreds of pipelines. Our production deployment demonstrates linear scalability with machine
 resources, extremely high availability even with underlying infrastructure failures, and an end-to-end latency of under
 a minute.
+
+\subsection{Blockchain systems}
+Over the last few years, there have been a large number of projects who have secured funding
+to work on the performance aspect of blockchain while focussed on a single class of attack
+called the Sybil attack \cite{john2002}. The notable designs include \cite{rapidchain, chainspace, ava2018, thundertoken} and Facebook's own Libra system (libra.org).
+
+For permissioned blockchains, notable designs inlude the Hyperledger project and the Ethereum Enterprise project. We are
+able to leverage learnings from both clases of projects to create a design that works best for the failure and
+attack scenarios in order to preserve COOP for mission critical systems.
+
+\subsection{Use of Zero Knowledge proofs}
+
+Zero-knowledge proofs (zk-proofs \cite{bunz2018}) are an exciting new technoloy that enables proof of a statement without revealing any additional
+knowledge to the verifier beyond the statement being proved. There are a wide range of applications possible for such
+a technology in the commercial space. We envision using zk-proofs for secure commitments, storage proofs and validity of
+commands in our system designed for COOP for mission critical operations. This will result in our system being strong
+against quantum computer based attacks for the forseeable future.
+
+\subsection{Blockchain as a Resilient Computer}
+
+While not an explicit goal for Phase I or Phase II, the research and engineering work into using a blockchain-based
+framework for COOP brings about the possibility of building a smart-contract based robust and attack-resistant computing
+platform. Similar projects have been proposed in the literature, as a blockchain based computer for the world
+\cite{reyes2018, yahya2019, hanke2018}. This opens up amazing new possibilities for a attack-resistant, failure
+resistant blockchain computer that has the ability to protect missio critical data including taking actions as directed
+by people in charge.
+
+In my view, this would be an exciting area of research and developement for the Department of Defense to pursue after the completion
+of Phase I and II.
+
+\subsection{Blackbox system}
+Google for paper:
+disaster-survivable building blackbox system for urban disaster response
+
