@@ -45,6 +45,20 @@ encryption, authentication and key distribution schemes are under risk. There is
 initial results that is focussed on building quantum-resistant cyptographic techniques \cite{qrl2016}. Our blockchain design
 uses such primitives from the grounds-up to design quantum-resistant distributed ledgers as the core building block.
 
+In \cite{linde2018}, author presents the post-quantum secure signature scheme XNYSS, which is
+based on Naor-Yung signature chaining of an One Time Signature (OTS) scheme is specifically designed for use in blockchain
+technologies. IOTA \cite{iota2018} achieves post-quantum secure signatures by using the Lamport
+OTS scheme \cite{lamport1979}.
+
+Chalkias, Brown, Hearn, Lillehagen, Nitto and Schroeter published an idea similar to \cite{linde2018} called Blockchained
+Post-Quantum Signatures (BPQS) \cite{bpqs}. BPQS, instead of creating one (or multiple) big tree(s), chains together very small
+Merkle trees consisting of only two leaves, a left and right leaf both containing an OTS public key. 
+
+Both BPQS and XNYSS are hash-based signature schemes designed to be used in blockchain technologies, and use a similar
+approach. The main difference between these two proposals is that XNYSS was designed to be easily added to existing
+blockchain implementations that are not yet quantum secure, while BPQS is a general improvement for blockchain
+technologies using hash-based signature schemes, such as the QRL. 
+
 \subsection{Use of Zero Knowledge proofs}
 
 Zero-knowledge proofs (zk-proofs \cite{bunz2018}) are an exciting new technoloy that enables proof of a statement without revealing any additional
