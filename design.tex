@@ -7,7 +7,7 @@ referred to some prior research that capture contemporary design concepts in thi
 garay2015, ava2018}. Also we refer the reader to Picolo Labs whitepaper for a planet-level robut decentralized database
 design \cite{picolo2018}.
 
-\subsubsection{Network stack}
+\subsection{Network stack}
 
 We shall use a p2p network stack designed for redudancy and resiliency to failures. There is wide range of research
 literature to draw a design from.  The Freenet \cite{freenet_thesis, Clarke_2001} and the Gnutella \cite{Gnutella} p2p
@@ -25,7 +25,7 @@ network conditions and coordinated failures. Our design space includes the possi
 detecting codes such as erasure codes / fountain codes (\cite{byers1998}, \cite{hu2013}) or other ways of adding
 redudancy into the application layer protocols \cite{bloxroute}.
 
-\subsubsection{Authenticaiton and access control}
+\subsection{Authenticaiton and access control}
 
 Since this is a permissioned blockchain network, each node shall be instantiated with a agency certificate and a node
 certificate. The agency or office certificate gives the local administrator certain privileges in terms of deactiviating
@@ -35,7 +35,7 @@ distriubted computer with its own consensus mechanism that is able to function i
 operations are allowed as per regular consensus mechanisms and a safe mode when the system is under attack. Using a
 system of smart contracts (Phase II work) the system is collectively able to transition between such modes intelligently.
 
-\subsubsection{Distributed Ledger}
+\subsection{Distributed Ledger}
 
 Our design of the distributed ledger will make use of concepts from the Trillian project which builds upon Merkle trees
 and Verifiable Data structures \cite{verifiable2015}. This allows the system to scale to potentially billions of
@@ -47,7 +47,7 @@ blockchain as append-only logs. Since any of these systems could be compromised 
 verify" philosophy that also underlies such data structures. The full design of how the blockchain uses this data
 structures shall be completed during Phase II of the project.
 
-\subsubsection{Proof of storage}
+\subsection{Proof of storage}
 
 While not explicitly a part of Phase I, the system incorporates succint and zero knowledge proofs of storage. Proofs
 of data and storage are cryptographic proofs constructed by participant nodes. These are quantum resistant and can be
@@ -55,7 +55,7 @@ used to prove the existing (or not) of data and node availability. While not an 
 design allows us to use such strong cryptographic constructs to make the system highly resilient to any coordinated
 attacker \cite{ben2019}.
 
-\subsubsection{Design of a Recovery mode}
+\subsection{Design of a Recovery mode}
 
 Our blockchain framework allows us to design a recovery mode which is a protocol that will get activiated based on a 
 smart contract and consensus system which puts the blockchain into a disaster recovery mode. A robust, fast and turing

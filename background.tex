@@ -68,6 +68,28 @@ for post-quantum signatures in the future. As such they are the chosen class of 
 
 \subsection{Consensus Models}
 
+The consensus protocol is a key component of any blockchain. It determines how securely and
+quickly blockchain validators reach consensus on the next block. Bitcoin uses Proof-of-Work which
+has known in-efficiencies. For our permissioned blockchain network, we shall use Byanzantine fault tolerant 
+consensus mechanisms that can tolerant a configruable amount of failure. This allows the system
+to reconfigure itself for a higher-trust and consensus agreement in the face of failure or attack, while
+reverting back to normal operation under regular conditions.
+
+An recent version of this is called the Practical Byzantine Fault Tolerance, as given in \cite{castro1999}. In PBFT, one
+node is elected as the “leader,” while the rest of the nodes are “validators.” Each round of PBFT consensus involves two
+major phases: the prepare phase and the commit phase. In the prepare phase, the leader broadcasts its proposal to all of
+the validators, who in turn broadcast their votes on the proposal to everyone else. The reason for the rebroadcasting to
+all validators is that the votes of each validator need to be counted by all other validators. The prepare phase
+finishes when more than $2f + 1$ consistent votes are seen, where $f$ is the number of malicious validators, and the
+total number of validators plus the leader is $3f + 1$. The commit phase involves a similar vote counting process, and
+consensus is reached when $2f + 1$ consistent votes are seen. Due to the rebroadcasting of votes among validators, PBFT
+has $O(N)$ communication complexity. It is possible to configure this system for a higher reliability by (i) either
+increasing the amount of consensus required, i.e., tuning the factor $f$ or (ii) biasing based on a role -- that is
+certain actors in the network can have a higher "weight" factor.
+
+Recent work by Team Rocket \cite{ava2018} has made some breakthrough progress in consensus protocols which we aim
+to incorporate into our design.
+
 %
 %\subsection{Distributed Ledgers}
 %
