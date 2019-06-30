@@ -1,3 +1,4 @@
+\label{sec:related}
 In this section, we present a brief summary of related work and how they contribute towards
 our design and implementation.
 
@@ -21,7 +22,6 @@ Under a friendlier, more reliable network that guarantees timely message deliver
 related results no longer hold:8 by making stronger guarantees about network behavior, we can circumvent the
 programmability implications of these impossibility proofs.
 
-
 The Ubiq \cite{ubiq}framework fully tolerates infrastructure degradation and datacenter-level outages without any manual
 intervention. It also guarantees exactly-once semantics for application pipelines to process logs in the form of event
 bundles. Ubiq has been in production for Google’s advertising system for many years and has served as a critical log
@@ -37,6 +37,13 @@ called the Sybil attack \cite{john2002}. The notable designs include \cite{rapid
 For permissioned blockchains, notable designs inlude the Hyperledger project and the Ethereum Enterprise project. We are
 able to leverage learnings from both clases of projects to create a design that works best for the failure and
 attack scenarios in order to preserve COOP for mission critical systems.
+
+\subsection{Quantum resistant ledgers}
+
+Quantum computers pose a security risk to current crytographic systems \cite{dasgupta2019}. As a result, many
+encryption, authentication and key distribution schemes are under risk. There is an active body of research with solid
+initial results that is focussed on building quantum-resistant cyptographic techniques \cite{qrl2016}. Our blockchain design
+uses such primitives from the grounds-up to design quantum-resistant distributed ledgers as the core building block.
 
 \subsection{Use of Zero Knowledge proofs}
 
@@ -57,8 +64,4 @@ by people in charge.
 
 In my view, this would be an exciting area of research and developement for the Department of Defense to pursue after the completion
 of Phase I and II.
-
-\subsection{Blackbox system}
-Google for paper:
-disaster-survivable building blackbox system for urban disaster response
 
