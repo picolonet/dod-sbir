@@ -3,36 +3,31 @@ In this section, we present a brief summary of related work and how they contrib
 our design and implementation.
 
 
-\subsection{Existing work on distributed systems}
+\subsection{On Reliability and Consensus in Distributed Systems}
 
 The ability (and often requirement) to communicate over a shared channel is a defining characteristic of distributed
 programs, and many of the key results in the field pertain to the possibility and impossibility of performing
 distributed computations under particular sets of network conditions.
 
-For example, the celebrated FLP impossibility result9 demonstrates the inability to guarantee consensus in an
+For example, the celebrated FLP impossibility result (see \cite{fischer1985}) demonstrates the inability to guarantee consensus in an
 asynchronous network (i.e., one facing indefinite communication partitions between processes) with one faulty process.
 This means that, in the presence of unreliable (untimely) message delivery, basic operations such as modifying the set
-of machines in a cluster (i.e., maintaining group membership, as systems such as Zookeeper are tasked with today) are
+of machines in a cluster are
 not guaranteed to complete in the event of both network asynchrony and individual server failures. Related results
-describe the inability to guarantee the progress of serializable transactions\cite{Davidson1985}, linearizable
-reads/writes \cite{Gilbert2002}, and a variety of useful, programmer-friendly guarantees under adverse conditions
-\cite{Bailis2013}. The implications of these results are not simply academic: these impossibility results have motivated
-a proliferation of systems and designs offering a range of alternative guarantees in the event of network failures.5
-Under a friendlier, more reliable network that guarantees timely message delivery, however, FLP and many of these
-related results no longer hold:8 by making stronger guarantees about network behavior, we can circumvent the
-programmability implications of these impossibility proofs.
+describe the inability to guarantee the progress of serializable transactions (\cite{Davidson1985}), linearizable
+reads/writes (\cite{Gilbert2002}), and a variety of useful, programmer-friendly guarantees under adverse conditions
+ (\cite{Bailis2013}). The implications of these results are not simply academic: these impossibility results have motivated
+a proliferation of systems and designs offering a range of alternative guarantees in the event of network failures.
 
 The Ubiq \cite{ubiq}framework fully tolerates infrastructure degradation and datacenter-level outages without any manual
 intervention. It also guarantees exactly-once semantics for application pipelines to process logs in the form of event
 bundles. Ubiq has been in production for Google’s advertising system for many years and has served as a critical log
-processing framework for hundreds of pipelines. Our production deployment demonstrates linear scalability with machine
-resources, extremely high availability even with underlying infrastructure failures, and an end-to-end latency of under
-a minute.
+processing framework for hundreds of pipelines. 
 
-\subsection{Blockchain systems}
-Over the last few years, there have been a large number of projects who have secured funding
-to work on the performance aspect of blockchain while focussed on a single class of attack
-called the Sybil attack \cite{john2002}. The notable designs include \cite{rapidchain, chainspace, ava2018, thundertoken} and Facebook's own Libra system (libra.org).
+\subsection{Existing Blockchain systems} Over the last few years, there have been a large number of projects who have
+secured funding to work on the performance aspect of blockchain while focussed on a single class of attack called the
+Sybil attack \cite{john2002}. The notable designs include \cite{rapidchain, chainspace, ava2018, thundertoken} and
+Facebook's own Libra system (libra.org).
 
 For permissioned blockchains, notable designs inlude the Hyperledger project and the Ethereum Enterprise project. We are
 able to leverage learnings from both clases of projects to create a design that works best for the failure and
@@ -40,9 +35,9 @@ attack scenarios in order to preserve COOP for mission critical systems.
 
 \subsection{Quantum resistant ledgers}
 
-Quantum computers pose a security risk to current crytographic systems \cite{dasgupta2019}. As a result, many
+Quantum computers pose a security risk to current crytographic systems (see \cite{dasgupta2019}). As a result, many
 encryption, authentication and key distribution schemes are under risk. There is an active body of research with solid
-initial results that is focussed on building quantum-resistant cyptographic techniques \cite{qrl2016}. Our blockchain design
+initial results that is focussed on building quantum-resistant cyptographic techniques (\cite{qrl2016}). Our blockchain design
 uses such primitives from the grounds-up to design quantum-resistant distributed ledgers as the core building block.
 
 In \cite{linde2018}, author presents the post-quantum secure signature scheme XNYSS, which is
@@ -57,7 +52,8 @@ Merkle trees consisting of only two leaves, a left and right leaf both containin
 Both BPQS and XNYSS are hash-based signature schemes designed to be used in blockchain technologies, and use a similar
 approach. The main difference between these two proposals is that XNYSS was designed to be easily added to existing
 blockchain implementations that are not yet quantum secure, while BPQS is a general improvement for blockchain
-technologies using hash-based signature schemes, such as the QRL. 
+technologies using hash-based signature schemes, such as the QRL. Our design utilizes and builds on both XNYSS and BPQS
+techniques in order to provide the quantum-resistance to the blockchain system.
 
 \subsection{Use of Zero Knowledge proofs}
 
@@ -71,7 +67,7 @@ against quantum computer based attacks for the forseeable future.
 
 While not an explicit goal for Phase I or Phase II, the research and engineering work into using a blockchain-based
 framework for COOP brings about the possibility of building a smart-contract based robust and attack-resistant computing
-platform. Similar projects have been proposed in the literature, as a blockchain based computer for the world
+platform. Similar projects have been proposed in the literature, as a blockchain based computer for the world, see 
 \cite{reyes2018, yahya2019, hanke2018}. This opens up amazing new possibilities for a attack-resistant, failure
 resistant blockchain computer that has the ability to protect missio critical data including taking actions as directed
 by people in charge.

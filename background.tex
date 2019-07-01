@@ -5,15 +5,15 @@ In this Section, we present a brief overview of relevant background material tha
 technology for COOP purposes.
 
 Blockchains are tamper evident and tamper resistant digital ledgers implemented in a distributed fashion (i.e., without
-a central repository) and usually without a central authority (i.e., a bank, company, or government). At their basic
-level, they enable a community of users to record transactions in a shared ledger within that community, such that under
-normal operation of the blockchain network no transaction can be changed once published.
+a central repository) and thus do not have a central point of failure. At their basic level, they enable a community of
+actors (users/machines/systems) to record transactions in a shared ledger within that community, such that under normal
+operation of the blockchain network no transaction can be changed once published.
 
-Blockchains are a distributed ledger comprised of blocks. Each block is comprised of a block header containing metadata
-about the block, and block data containing a set of transactions and other related data. Every block header (except for
-the very first block of the blockchain) contains a cryptographic link to the previous block’s header. Each transaction
-involves one or more blockchain network users and a recording of what happened, and it is digitally signed by the user
-who submitted the transaction.
+At a technical level, Blockchains are a distributed ledger comprised of blocks. Each block is comprised of a block
+header containing metadata about the block, and block data containing a set of transactions and other related data.
+Every block header (except the first) contains a cryptographic link to the previous
+block’s header. Each transaction is digitally signed and added to the chain based on an {\it consensus} among the
+participating entities (nodes/machines or users).
 
 Trust within a blockchain network is enabled by four key characteristics of blockchain technology, which become
 important in an adversarial scenario:
@@ -22,9 +22,9 @@ important in an adversarial scenario:
 Unlike traditional databases, transactions and values in a blockchain are not overridden.
 \item {\bf Secure} – blockchains are cryptographically secure, ensuring that the data contained
 within the ledger has not been tampered with, and that the data within the ledger is
-attestable.
-\item {\bf Shared} – the ledger is shared amongst multiple participants. This provides transparency
-across the node participants in the blockchain network.
+        attestable. Our design is {\it quantum-safe}, that is, it cannot be broken by a quantum computer in the future.
+\item {\bf Shared} – the ledger is shared amongst multiple participants. This provides transparency, redundancy and
+    resilience to failures/attacks across the node participants in the blockchain network.
 \item {\bf Distributed} – the blockchain can be distributed. This allows for scaling the number of
 nodes of a blockchain network to make it more resilient to attacks by bad actors. By
 increasing the number of nodes, the ability for a bad actor to impact the consensus
@@ -36,34 +36,29 @@ permissioned. In a permissionless blockchain network anyone can read and write t
 Permissioned blockchain networks limit participation to specific people or organizations and allow finer-grained
 controls.  For our use case, we envision this to be a permissioned or a "consortium" design that explicity allows
 specific installations, such as government, defense or military entities to be part of the network.  The network
-membership would be based off public key crytography based access control mechanisms that have been successfully used in
-the Internet today.
+membership would be based off quantum-resistant assymetric key based access control mechanisms that allow
+delegation of roles and governance.
 
-Our design shall use the concepts of transactions that get batched up into {\it blocks} with successive blocks forming a
-chain. This is the most common structure that many successful blockchain projects have used in production.
+\subsection{Quantum-resistant distributed ledgers}
 
-\subsection{Quantum resistant distributed ledgers}
+Most blockchain ledgers today rely on elliptic curve public-key cryptography (ECDSA) to generate digital signatures
+which allow transactions to be verified securely. The most commonly used signature schemes today such as ECDSA, DSA and
+RSA are theoretically vulnerable to quantum computing attack. RSA, DSA and ECDSA remain secure based upon the
+computational difficulty of factorisation of large integers, the discrete logarithm problem and the elliptic-curve
+discrete logarithm problem. Shor’s quantum algorithm (see \cite{shor1997}) solves factorisation of large integers and discrete
+logarithms in polynomial time. Therefore, a quantum computer could theoretically reconstitute the private key given an
+ECDSA public key. It is thought ECDSA is more vulnerable to quantum attack than RSA due to the use of smaller keysizes,
+with a 1300 and 1600 qubit (211) quantum computer able to solve 228 bit ECDSA.
 
-Hundreds of similar cryptocurrency ledgers have been subsequently created but with few exceptions they rely on the same
-elliptic curve public-key cryptography (ECDSA) to generate digital signatures which allow transactions to be verified
-securely. The most commonly used signature schemes today such as ECDSA, DSA and RSA are theoretically vulnerable to
-quantum computing attack. It would be valuable to explore the design and construction of a quantum resistant blockchain
-ledger to counter the potential advent of a sudden non-linear quantum computing advance.
-
-RSA, DSA and ECDSA remain secure based upon the computational difficulty of factorisation of large integers, the
-discrete logarithm problem and the elliptic-curve discrete logarithm problem. Shor’s quantum
-algorithm (1994) solves factorisation of large integers and discrete logarithms in polynomial time. Therefore,
-a quantum computer could theoretically reconstitute the private key given an ECDSA public key. It is
-thought ECDSA is more vulnerable to quantum attack than RSA due to the use of smaller keysizes, with a
-1300 and 1600 qubit (211) quantum computer able to solve 228 bit ECDSA.
-
-There are several important cryptographic systems which are believed to be quantum-resistant: hash-based cryptography,
-code-based cryptography, lattice-based cryptography, multivariate-quadratic-equations cryptography and secret-key
-cryptography. All these schemes are thought to resist both classical and quantum computing attack given sufficiently
-long key sizes.  Forward secure hash-based digital signature schemes exist with minimal security requirements that rely
-only upon the collision-resistance of a cryptographic hash function. Changing the chosen hash function produces a new
-hash-based digital signature scheme. Hash-based digital signatures are well studied and represent the primary candidate
-for post-quantum signatures in the future. As such they are the chosen class of post-quantum signature for the QRL.
+In this project, we will construct a functioning prototype of a quantum resistant blockchain ledger to counter the
+potential advent of a non-linear quantum computing advance.  There are several important cryptographic systems which are
+believed to be quantum-resistant: hash-based cryptography, code-based cryptography, lattice-based cryptography,
+multivariate-quadratic-equations cryptography and secret-key cryptography. All these schemes are thought to resist both
+classical and quantum computing attack given sufficiently long key sizes.  Forward secure hash-based digital signature
+schemes exist with minimal security requirements that rely only upon the collision-resistance of a cryptographic hash
+function. Changing the chosen hash function produces a new hash-based digital signature scheme. Hash-based digital
+signatures are well studied and represent the primary candidate for post-quantum signatures in the future. As such they
+are the chosen class of post-quantum signature for existing projects in this space such as \cite{qrl2016}.
 
 
 \subsection{Consensus Models}
@@ -87,7 +82,7 @@ has $O(N)$ communication complexity. It is possible to configure this system for
 increasing the amount of consensus required, i.e., tuning the factor $f$ or (ii) biasing based on a role -- that is
 certain actors in the network can have a higher "weight" factor.
 
-Recent work by Team Rocket \cite{ava2018} has made some breakthrough progress in consensus protocols which we aim
+Recent work by Team Rocket (see \cite{ava2018}) has made some breakthrough progress in consensus protocols which we aim
 to incorporate into our design.
 
 %

@@ -7,7 +7,7 @@ goals given in the original proposal with details on execution.
 As given in the call for proposals, we shall use two different environments for our simulations:
 
 \begin{enumerate}
-    \item {\bf Medium latency Wide-area networks :} We shall utilize existing research \cite{gustaf2013, haq2017}
+    \item {\bf Medium latency Wide-area networks :} We shall utilize existing research by \cite{gustaf2013, haq2017}
 to emulate networks with medium-latency and medium-bandwidth. Our testbed shall consist of 
 containers that use virtualized network stacks on the Linux platform. We shall programmatically
 emulate different network conditions to study the resilience of the blockchain system.
@@ -17,8 +17,8 @@ exemplified by WANs that include satellite links. Our emulation testbed gives us
 coordinated link and node failures attacks such as that can happen in a disaster scenario as discussed next.
  
 \item {\bf Other failure modes:} Apart from network failures, we shall also study the performance of the blockchain
-system under coordinated models of attack by building upon the past research in this area \cite{xiao2006, niu2017,
-kurar2014, zhou2010}. The specific failure/attack models include sudden coodinated failures of network links and nodes,
+    system under coordinated models of attack by building upon the past research in this area (\cite{xiao2006, niu2017,
+        kurar2014, zhou2010}). The specific failure/attack models include sudden coodinated failures of network links and nodes,
 compromise of systems including security credentials and denial-of-service.
 
 \end{enumerate}
@@ -27,8 +27,6 @@ Next, we discuss the specific milestones for Phase I for our work.
 
 \subsection{Phase I milestones:}
 
-We present a series of milestones for our work in Phase I. 
-
 \begin{enumerate}
 \item {\bf Prototype Design:} Complete a design of a blockchain-based quantum resistant system for
 mission critical operation and COOP goals. The milestone consists of a design document with high-level specification of
@@ -36,10 +34,9 @@ each component of the blockchain system, including design of the ledger, the con
 data query and other supported operations.
 
 
-\item {\bf Internal Testbed:} Build a testbed using hosted containers and simulated networks for iterated model of code
-development and testing before moving to the real test. This capability will be important for rapid prototyping, testing
-and development in-house. This will also allow the team to test the blockchain with various synthetic failure models
-before proceeding forward with the Phase I simulations.
+\item {\bf Internal Testbed:} Build a testbed using hosted containers and simulated networks for in-house 
+development and testing before migrating to the real simulation. This capability will be important for rapid prototyping, testing
+and development under various synthetic failure models before proceeding forward with the Phase I simulations.
 
 \item {\bf Engineering prototype:} The prototype blockchain would have undergone enough internal testing to be ready for
 the simulation run. This milestone also includes implemenation of the simulation environment, including creation of
