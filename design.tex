@@ -17,7 +17,7 @@ Kademlia. Chord along with CAN, Tapestry and Pastry developed the concept of dis
 fundamental mechanism for content-based addressing.
 
 Our design builds upon this prior work by using a quantum-resistant distributed hash table for
-publish/subscribe of services will allow for database services to move from one compute node to another in the face of
+publish/subscribe operations. Such a DHT-based design will allow database services to move from one compute node to another in the face of
 failures. A heartbeat protocol for node aliveness and discovery could accomplish the goals of resilience to diverse
 network conditions and coordinated failures. Our design space includes the possibility of utilizing error-correcting or
 detecting codes such as erasure codes / fountain codes (\cite{byers1998}, \cite{hu2013}) or other ways of adding
@@ -49,7 +49,7 @@ structures shall be completed during Phase II of the project.
 
 While not explicitly a part of Phase I, the system incorporates succinct and zero knowledge proofs of storage. Proofs
 of data and storage are cryptographic proofs constructed by participant nodes. These are quantum resistant and can be
-used to prove the existing (or not) of data and node availability. While not an explicit goal in Phase I or II, our
+used to prove the existence (or not) of data and node availability. While not an explicit goal in Phase I or II, our
 design allows us to use such strong cryptographic constructs to make the system highly resilient to any coordinated
 attacker (see \cite{ben2019}).
 
