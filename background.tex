@@ -34,9 +34,9 @@ protocol used by the blockchain is reduced.
 There are two general high-level categories for blockchain approaches that have been identified: permissionless, and
 permissioned. In a permissionless blockchain network anyone can read and write to the blockchain without authorization.
 Permissioned blockchain networks limit participation to specific people or organizations and allow finer-grained
-controls.  For our use case, we envision this to be a permissioned or a "consortium" design that explicity allows
+controls.  For our use case, we envision this to be a permissioned or a "consortium" design that explicitly allows
 specific installations, such as government, defense or military entities to be part of the network.  The network
-membership would be based off quantum-resistant assymetric key based access control mechanisms that allow
+membership would be based off quantum-resistant asymmetric key based access control mechanisms that allow
 delegation of roles and governance.
 
 \subsection{Quantum-resistant distributed ledgers}
@@ -44,10 +44,10 @@ delegation of roles and governance.
 Most blockchain ledgers today rely on elliptic curve public-key cryptography (ECDSA) to generate digital signatures
 which allow transactions to be verified securely. The most commonly used signature schemes today such as ECDSA, DSA and
 RSA are theoretically vulnerable to quantum computing attack. RSA, DSA and ECDSA remain secure based upon the
-computational difficulty of factorisation of large integers, the discrete logarithm problem and the elliptic-curve
-discrete logarithm problem. Shor’s quantum algorithm (see \cite{shor1997}) solves factorisation of large integers and discrete
+computational difficulty of factorization of large integers, the discrete logarithm problem and the elliptic-curve
+discrete logarithm problem. Shor’s quantum algorithm (see \cite{shor1997}) solves factorization of large integers and discrete
 logarithms in polynomial time. Therefore, a quantum computer could theoretically reconstitute the private key given an
-ECDSA public key. It is thought ECDSA is more vulnerable to quantum attack than RSA due to the use of smaller keysizes,
+ECDSA public key. It is thought ECDSA is more vulnerable to quantum attack than RSA due to the use of smaller key-sizes,
 with a 1300 and 1600 qubit (211) quantum computer able to solve 228 bit ECDSA.
 
 In this project, we will construct a functioning prototype of a quantum resistant blockchain ledger to counter the
@@ -65,8 +65,8 @@ are the chosen class of post-quantum signature for existing projects in this spa
 
 The consensus protocol is a key component of any blockchain. It determines how securely and
 quickly blockchain validators reach consensus on the next block. Bitcoin uses Proof-of-Work which
-has known in-efficiencies. For our permissioned blockchain network, we shall use Byanzantine fault tolerant 
-consensus mechanisms that can tolerant a configruable amount of failure. This allows the system
+has known in-efficiencies. For our permissioned blockchain network, we shall use Byzantine fault tolerant 
+consensus mechanisms that can tolerant a configurable amount of failure. This allows the system
 to reconfigure itself for a higher-trust and consensus agreement in the face of failure or attack, while
 reverting back to normal operation under regular conditions.
 

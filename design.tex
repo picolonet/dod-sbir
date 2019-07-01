@@ -1,16 +1,16 @@
 \label{sec:design} This section describes the technical design for achieving our Phase I/II objectives. The principal
 components of a secure and performant Blockchain system include a decentralized and distributed quantum-resistant ledger, a network stack,
-a consensus mechanism and possibly a smart contract system in a turing complete language. The reader is referred to some
+a consensus mechanism and possibly a smart contract system in a Turing complete language. The reader is referred to some
 prior research that capture contemporary design concepts in this space, namely \cite{micali16, garay2015, ava2018}. Also
-we refer the reader to Picolo Labs whitepaper for a planet-level robust decentralized database design (see
+we refer the reader to Picolo Labs white-paper for a planet-level robust decentralized database design (see
 \cite{picolo2018}).
 
 \subsection{Network stack}
 
-We shall use a peer-to-peer (p2p) network stack designed for redudancy and resiliency to failures. There is wide range of research
+We shall use a peer-to-peer (p2p) network stack designed for redundancy and resiliency to failures. There is wide range of research
 literature to draw a design from.  The Freenet \cite{freenet_thesis, Clarke_2001} and the Gnutella \cite{Gnutella} p2p
 systems were popular in the previous decade for file sharing under highly unreliable conditions.
-Content reliabilty including lookup reliability and network latency goals were necessary in
+Content reliability including lookup reliability and network latency goals were necessary in
 this environment. The second generation of p2p systems include research projects such as Chord \cite{Stoica_2001},
 Content Addressable Network (CAN) \cite{Ratnasamy_2001}, Pastry \cite{Rowstron_2001}, Tapestry \cite{tapestry2004} and
 Kademlia. Chord along with CAN, Tapestry and Pastry developed the concept of distributed hash tables (DHTs) as a
@@ -21,15 +21,15 @@ publish/subscribe of services will allow for database services to move from one 
 failures. A heartbeat protocol for node aliveness and discovery could accomplish the goals of resilience to diverse
 network conditions and coordinated failures. Our design space includes the possibility of utilizing error-correcting or
 detecting codes such as erasure codes / fountain codes (\cite{byers1998}, \cite{hu2013}) or other ways of adding
-redudancy into the application layer protocol (see \cite{bloxroute}).
+redundancy into the application layer protocol (see \cite{bloxroute}).
 
-\subsection{Authenticaiton and access control}
+\subsection{Authentication and access control}
 
 Since this is a permissioned blockchain network, each node shall be instantiated with a agency certificate and a node
 certificate. The agency or office certificate gives the local administrator certain privileges in terms of deactivating
-potentially malicious nodes or provisionin additional capacity into the system. Each transaction into the blockchain
+potentially malicious nodes or provisioning additional capacity into the system. Each transaction into the blockchain
 ledger shall be authenticated by the proposer and validated using a consensus mechanism. The blockchain acts as a
-distriubted computer with its own consensus mechanism that is able to function in various modes: a normal mode where
+distributed computer with its own consensus mechanism that is able to function in various modes: a normal mode where
 operations are allowed as per regular consensus mechanisms and a safe mode when the system is under attack. Using a
 system of smart contracts (Phase II work) the system is collectively able to transition between such modes intelligently.
 
@@ -40,14 +40,14 @@ and Verifiable Data structures (see \cite{verifiable2015}). This allows the syst
 indexable records should the need arise.
 
 The blockchain data store is built upon the Verifiable Data structures concept (\cite{verifiable2015}). The idea is that each
-system in the chain of mission criticial IT systems, would be able to submit transactions which get recorded on the
+system in the chain of mission critical IT systems, would be able to submit transactions which get recorded on the
 blockchain as append-only logs. Since any of these systems could be compromised or attacked, we assume a "trust but
 verify" philosophy that also underlies such data structures. The full design of how the blockchain uses this data
 structures shall be completed during Phase II of the project.
 
 \subsection{Proof of storage}
 
-While not explicitly a part of Phase I, the system incorporates succint and zero knowledge proofs of storage. Proofs
+While not explicitly a part of Phase I, the system incorporates succinct and zero knowledge proofs of storage. Proofs
 of data and storage are cryptographic proofs constructed by participant nodes. These are quantum resistant and can be
 used to prove the existing (or not) of data and node availability. While not an explicit goal in Phase I or II, our
 design allows us to use such strong cryptographic constructs to make the system highly resilient to any coordinated
@@ -56,7 +56,7 @@ attacker (see \cite{ben2019}).
 \subsection{Design of a Recovery mode}
 
 Our blockchain framework allows us to design a recovery mode which is a protocol that will get activated based on a 
-smart contract and consensus system which puts the blockchain into a disaster recovery mode. A robust, fast and turing
+smart contract and consensus system which puts the blockchain into a disaster recovery mode. A robust, fast and Turin
 complete smart contract system can be used for this design (see \cite{kalodner2018}). This mode can put in 
 stricter controls and automatic locking of certain types of data silos, for example. Over time, this could be programmed
 for other mission specific recovery mode behaviors.
